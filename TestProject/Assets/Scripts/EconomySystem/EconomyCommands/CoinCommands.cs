@@ -2,23 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinCommands : ICommand
+public class CoinCommands : CommandBase
 {
-    #region Private Fields
-    private PlayerEconomy currentEconomy;
-    #endregion
 
-    public CoinCommands(PlayerEconomy _currentEconomy)
+    public CoinCommands(PlayerEconomy _currentEconomy, float _coinToOperate)
     {
         this.currentEconomy = _currentEconomy;
+        this.coinToOperate = _coinToOperate;
     }
-    public void Execute()
+    public override void Execute()
     {
-        throw new System.NotImplementedException();
+        base.Execute();
+        this.currentEconomy.CurrentCoinCount += this.coinToOperate;
+        this.currentEconomy.TxtPlayerCoins.text = this.currentEconomy.CurrentCoinCount.ToString();
     }
-
-    public void Undo()
+    public override void Undo()
     {
-        throw new System.NotImplementedException();
+        base.Undo();
+        this.currentEconomy.CurrentCoinCount -= this.coinToOperate;
+        this.currentEconomy.TxtPlayerCoins.text = this.currentEconomy.CurrentCoinCount.ToString();
     }
 }
