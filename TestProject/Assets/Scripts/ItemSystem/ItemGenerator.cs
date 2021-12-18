@@ -34,7 +34,7 @@ public class ItemGenerator : MonoBehaviour
 
     [Header("Currency Value")]
     [SerializeField]
-    string currencyValue;
+    float currencyValue;
 
     [Header("Currency Exp Text")]
     [SerializeField]
@@ -51,9 +51,18 @@ public class ItemGenerator : MonoBehaviour
     float itemBuyValue;
     #endregion
 
+    #region Properties
+    public float CurrencyValue
+    {
+        get => this.currencyValue;
+    }
+    #endregion
+
+
     #region Unity Methods
     private void Start()
     {
+        this.SetInitialValues();
     }
     #endregion
 
@@ -71,10 +80,14 @@ public class ItemGenerator : MonoBehaviour
         {
             this.imgcurrencyIcon.enabled = false;
         }
-        this.txtCurrencyPrice.text = this.currencyValue;
+        ///work around to not show Money symbols
+        string result = this.currencyValue.ToString("C0");
+        this.txtCurrencyPrice.text = result.Substring(1, result.Length - 1);
         this.txtItemBuyPrice.text = $"${this.itemBuyValue.ToString("0.00")} USD";
         this.txtExp.text = this.expString;
     }
+
+
     #endregion
 
 

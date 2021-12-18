@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 ///  Script is to keep track of player main economy
 ///  Keep Track of  owned items
 /// </summary>
-public class PlayerEconomy : MonoBehaviour
+public class PlayerCommands : MonoBehaviour
 {
     #region Unity Fields
     [Header("Special Offer Gift Images List")]
@@ -25,9 +25,9 @@ public class PlayerEconomy : MonoBehaviour
     [Header("Player Currency Texts")]
 
     [SerializeField]
-    TextMeshProUGUI txtPlayerCoins;
+    Text txtPlayerCoins;
     [SerializeField]
-    TextMeshProUGUI txtPlayerGems;
+    Text txtPlayerGems;
     [SerializeField]
     [Header("Set's the number of special offer count after this number reached speacial offer will be disabled")]
     int specialOfferBuyCount = 1;
@@ -56,14 +56,14 @@ public class PlayerEconomy : MonoBehaviour
         get => this.currentGemCount;
         set => this.currentGemCount = value;
     }
-    public TextMeshProUGUI TxtPlayerCoins
+    public Text TxtPlayerCoins
     {
         get => this.txtPlayerCoins;
         set => this.txtPlayerCoins=value;
 
 
     }
-    public TextMeshProUGUI TxtPlayerGems
+    public Text TxtPlayerGems
     {
         get => this.txtPlayerGems;
         set => this.txtPlayerGems = value;
@@ -89,24 +89,31 @@ public class PlayerEconomy : MonoBehaviour
     #region Public Methods
     public void BuyCoin(float addedCount)
     {
+        addedCount = this.DecideOffer(addedCount);
+        cmds.Execute(new CoinCommands(this, addedCount));
+    }
+
+    public void BuyGem(float addedCount)
+    {
+        addedCount = this.DecideOffer(addedCount);
+        cmds.Execute(new GemCommands(this, addedCount));
+    }
+    #endregion
+    #region Private Methods
+    float DecideOffer(float financial)
+    {
         if (this.currentSpecialOffer >= 0)
         {
             this.currentSpecialOffer -= 1;
-            addedCount *= 2; // double  the win if special offer count is large then zero
+            financial *= 2; // double  the win if special offer count is large then zero
         }
         else
         {
             this.DisableSpecialOfferBanner();
         }
-        cmds.Execute(new CoinCommands(this, addedCount));
-    }
 
-    public void BuyGem(float addedCount)
-    { 
-    
+        return financial;
     }
-    #endregion
-    #region Private Methods
     /// <summary>
     /// hides banner when there is no special offer
     /// </summary>

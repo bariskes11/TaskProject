@@ -9,9 +9,19 @@ public class CommandBase : ICommand
 {
 
     #region Protected Fields
-    protected PlayerEconomy currentEconomy;
-    protected float coinToOperate;
+    protected PlayerCommands currentCommands;
+    /// <summary>
+    /// financial  can be coin/gem exc...
+    /// </summary>
+    protected float financialToOperate;
     #endregion
+
+    public CommandBase(PlayerCommands _currentCommads, float _financialToOperate )
+    {
+        this.currentCommands = _currentCommads;
+        this.financialToOperate = _financialToOperate;
+
+    }
     public  virtual void Execute()
     {
         // base general logic to add
