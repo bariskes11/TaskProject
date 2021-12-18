@@ -12,7 +12,7 @@ public class CoinCommands : CommandBase
     {
         base.Execute();
         this.currentCommands.CurrentCoinCount += this.financialToOperate;
-        this.currentCommands.TxtPlayerCoins.text = this.currentCommands.CurrentCoinCount.ToString();
+        this.currentCommands.TxtPlayerCoins.text = Converter.ConvertCurrencyToString(this.currentCommands.CurrentCoinCount);
     }
     public override void Undo()
     {

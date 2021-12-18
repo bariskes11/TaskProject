@@ -81,7 +81,7 @@ public class PlayerCommands : MonoBehaviour
 
         this.currentCoinCount =float.Parse( this.txtPlayerCoins.text);
         this.currentGemCount = float.Parse(this.txtPlayerGems.text);
-        this.specialOfferBuyCount = this.currentSpecialOffer;
+        this.currentSpecialOffer = this.specialOfferBuyCount;
     }
 
     #endregion
@@ -102,12 +102,14 @@ public class PlayerCommands : MonoBehaviour
     #region Private Methods
     float DecideOffer(float financial)
     {
-        if (this.currentSpecialOffer >= 0)
+        
+        if (this.currentSpecialOffer > 0)
         {
-            this.currentSpecialOffer -= 1;
             financial *= 2; // double  the win if special offer count is large then zero
+            this.currentSpecialOffer -= 1;// decreiseoffer count
         }
-        else
+        
+        if(this.currentSpecialOffer<=0) // no offer left
         {
             this.DisableSpecialOfferBanner();
         }

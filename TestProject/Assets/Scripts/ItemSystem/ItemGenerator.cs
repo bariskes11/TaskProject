@@ -80,9 +80,7 @@ public class ItemGenerator : MonoBehaviour
         {
             this.imgcurrencyIcon.enabled = false;
         }
-        ///work around to not show Money symbols
-        string result = this.currencyValue.ToString("C0");
-        this.txtCurrencyPrice.text = result.Substring(1, result.Length - 1);
+        this.txtCurrencyPrice.text = Converter.ConvertCurrencyToString(this.currencyValue);
         this.txtItemBuyPrice.text = $"${this.itemBuyValue.ToString("0.00")} USD";
         this.txtExp.text = this.expString;
     }
