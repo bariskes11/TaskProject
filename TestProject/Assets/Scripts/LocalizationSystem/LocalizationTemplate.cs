@@ -7,10 +7,10 @@ using UnityEngine;
 public class LocalizationTemplate 
 {
     // to show at Labelled object
-    public string label { get; set; }
+    public string label;
     // Labels text
-    public string text { get; set; }
+    public string text;
     // to detect if its Right to Left
-    public string RTL { get; set; }
+    public string RTL;
 
 }

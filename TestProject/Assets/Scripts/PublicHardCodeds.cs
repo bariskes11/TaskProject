@@ -16,7 +16,14 @@ public class PublicHardCodeds
         EN,//English
         TR,// Turkish
         GR,// German
+    }
 
+    // to Keep Track of added Language labels
+    
+    public enum Languagelabels
+    {
+        CurrentLanguage,
+        Read,
 
     }
 }

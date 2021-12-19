@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 457344792}
   - component: {fileID: 457344791}
   m_Layer: 5
-  m_Name: txtLanguageMessage
+  m_Name: txtLanguageRead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1413,6 +1413,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00a90469c0f368b42a7cd363c8a77fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  txtCurrentLanguage: {fileID: 291810513}
+  txtCurrentLanguageRead: {fileID: 457344791}
+  btnEng: {fileID: 276380200}
+  btnTR: {fileID: 1260288843}
+  btnGR: {fileID: 1075150347}
 --- !u!4 &1920158048
 Transform:
   m_ObjectHideFlags: 0
