@@ -68,6 +68,14 @@ public class PlayerCommands : MonoBehaviour
         get => this.txtPlayerGems;
         set => this.txtPlayerGems = value;
     }
+    private Vector3 lastPos;
+    public Vector3 LastPos
+    {
+        get => this.lastPos;
+        set => this.lastPos = value;
+
+    }
+
 
     #endregion
 
@@ -87,16 +95,21 @@ public class PlayerCommands : MonoBehaviour
     #endregion
 
     #region Public Methods
-    public void BuyCoin(float addedCount)
+    public void BuyCoin(float addedCount,GameObject button)
     {
+        
         addedCount = this.DecideOffer(addedCount);
         cmds.Execute(new CoinCommands(this, addedCount));
+        EventManager.OnOwnedItem.Invoke(PublicHardCodeds.FinancialTypes.Coin, button);
     }
 
-    public void BuyGem(float addedCount)
+    public void BuyGem(float addedCount, GameObject button)
     {
+        
         addedCount = this.DecideOffer(addedCount);
         cmds.Execute(new GemCommands(this, addedCount));
+        EventManager.OnOwnedItem.Invoke(PublicHardCodeds.FinancialTypes.Gem, button);
+
     }
     #endregion
     #region Private Methods

@@ -49,12 +49,11 @@ public class ItemInteraction : MonoBehaviour
         switch (this.financeType) // decide financial type send command to player
         {
             case PublicHardCodeds.FinancialTypes.Coin:
-                player.BuyCoin(this.itemgenerator.CurrencyValue);
+                player.BuyCoin(this.itemgenerator.CurrencyValue,this.gameObject);
                 break;
             case PublicHardCodeds.FinancialTypes.Gem:
-                player.BuyGem(this.itemgenerator.CurrencyValue);
-                break;
-            
+                player.BuyGem(this.itemgenerator.CurrencyValue,this.gameObject);
+                break;   
         }
     }
 
