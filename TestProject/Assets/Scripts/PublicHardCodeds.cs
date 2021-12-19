@@ -6,9 +6,17 @@ using UnityEngine;
 
 public class PublicHardCodeds
 {
-    public  enum FinancialTypes
-    { 
-    Coin,
-    Gem
+    public enum FinancialTypes
+    {
+        Coin,
+        Gem
+    }
+    public enum Languages
+    {
+        EN,//English
+        TR,// Turkish
+        GR,// German
+
+
     }
 }

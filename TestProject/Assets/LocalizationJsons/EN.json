@@ -1,0 +1,14 @@
+{
+  "Words": [
+    {
+      "label": "CurrentLanguage",
+      "text": "Current Language is English!",
+      "RTL": "0"
+    },
+    {
+      "label": "Read",
+      "text": "Let's Read This Text in English",
+      "RTL": "0"
+    }
+  ]
+}

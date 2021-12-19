@@ -1,0 +1,15 @@
+{
+  "Words": [
+    {
+      "label": "CurrentLanguage",
+      "text": "gewählte Sprache ist Deutsch!",
+      "RTL": "0"
+    },
+    {
+      "label": "Read",
+      "text": "Lass uns diesen Artikel auf Englisch lesen",
+      "RTL": "0"
+    }
+  ]
+}
+
